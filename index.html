@@ -1,0 +1,592 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SECOND CHANCE | Thrift Store</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-color: #fff8f0;
+    color: #533b3b;
+}
+
+/* NAVBAR */
+header {
+    background: #f8cbd8;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 3px solid #533b3b;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #a83d59;
+    letter-spacing: 2px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #533b3b;
+    margin-left: 22px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #d64b69;
+}
+
+/* GENERAL */
+section {
+    padding: 75px 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 35px;
+    color: #a83d59;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #806767;
+}
+
+/* HOME */
+#home {
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    background: #fce5b9;
+}
+
+.hero-text {
+    max-width: 500px;
+}
+
+.hero-text small {
+    color: #b34861;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero-text h1 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin: 18px 0;
+    color: #a83d59;
+}
+
+.hero-text p {
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.button {
+    display: inline-block;
+    background: #d84e6c;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.button:hover {
+    background: #a83d59;
+}
+
+.hero-figure {
+    width: 45%;
+    text-align: center;
+}
+
+.hero-image {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border: 8px solid white;
+    border-radius: 20px;
+    box-shadow: 10px 10px #e99ab0;
+}
+
+.image-source {
+    font-size: 11px;
+    color: #806767;
+    margin-top: 12px;
+}
+
+.image-source a {
+    color: #a83d59;
+    text-decoration: underline;
+}
+
+/* DECORATION */
+.decoration {
+    text-align: center;
+    font-size: 28px;
+    color: #d84e6c;
+    margin: 15px 0;
+}
+
+/* PROFILE */
+#profile {
+    background: #fff8f0;
+    text-align: center;
+}
+
+.profile-box {
+    background: #f8d6df;
+    padding: 35px;
+    border-radius: 25px;
+    max-width: 850px;
+    margin: auto;
+    line-height: 1.9;
+    border: 2px dashed #d87991;
+}
+
+.profile-box h3 {
+    color: #a83d59;
+    margin: 15px 0 5px;
+}
+
+/* STORE */
+#store {
+    background: #fce5b9;
+}
+
+.store-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.info-card {
+    background: white;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 20px;
+    border-bottom: 5px solid #e99ab0;
+}
+
+.info-card .icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.info-card h3 {
+    color: #a83d59;
+    margin-bottom: 10px;
+}
+
+/* PRODUCT */
+#product {
+    background: #fff8f0;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid #f4d2d9;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 5px 8px 15px #e8c4cb;
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    padding: 18px;
+}
+
+.product-info h3 {
+    color: #a83d59;
+    margin-bottom: 8px;
+}
+
+.price {
+    color: #d84e6c;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.condition {
+    display: inline-block;
+    background: #fce5b9;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* CONTACT */
+#contact {
+    background: #f8cbd8;
+    text-align: center;
+}
+
+.contact-box {
+    background: #fff8f0;
+    max-width: 650px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 25px;
+    line-height: 2.2;
+}
+
+.contact-box a {
+    color: #a83d59;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+    background: #533b3b;
+    color: white;
+    text-align: center;
+    padding: 22px;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 750px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0 6px;
+        font-size: 12px;
+    }
+
+    #home {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 42px;
+    }
+
+    .hero-figure {
+        width: 90%;
+    }
+
+    .product-grid,
+    .store-info {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+    <div class="logo">🎀 SECOND CHANCE</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#profile">Profile</a>
+        <a href="#store">Store</a>
+        <a href="#product">Product</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<section id="home">
+    <div class="hero-text">
+        <small>WELCOME TO OUR LITTLE THRIFT SHOP</small>
+
+        <h1>Fashion Deserves a Second Chance!</h1>
+
+        <p>
+            Temukan pakaian unik dan stylish dengan harga
+            yang ramah di kantong. Setiap pakaian punya
+            cerita, yuk beri mereka kesempatan kedua!
+        </p>
+
+        <a href="#produk" class="button">Explore Collection ♡</a>
+    </div>
+
+    <figure class="hero-figure">
+        <img class="hero-image"
+        src="dastorage.jpg"
+        alt="Inside a thrift store">
+
+        <figcaption class="image-source">
+            Source:
+            <a href="https://pin.it/5ugr6YTkC"
+            target="_blank">
+                Pinterest
+            </a>
+        </figcaption>
+    </figure>
+</section>
+
+<div class="decoration">୨୧　♡　✿　♡　୨୧</div>
+
+<!-- PROFILE -->
+<section id="profile">
+    <h2 class="section-title">About Us ♡</h2>
+    <p class="subtitle">A little story behind our store</p>
+
+    <div class="profile-box">
+        <p>
+            SECOND CHANCE adalah toko thrift yang menyediakan
+            berbagai pilihan pakaian secondhand berkualitas.
+            Kami percaya bahwa fashion tidak harus selalu baru
+            untuk terlihat menarik.
+        </p>
+
+        <h3>Our Vision</h3>
+        <p>
+            Menjadi toko thrift yang menyediakan fashion
+            stylish, terjangkau, dan ramah lingkungan.
+        </p>
+
+        <h3>Our Mission</h3>
+        <p>
+            Memberikan kesempatan kedua bagi pakaian yang
+            masih layak digunakan serta membantu pelanggan
+            menemukan gaya mereka sendiri.
+        </p>
+    </div>
+</section>
+
+<!-- SHOP -->
+<section id="SHOP">
+    <h2 class="section-title">Our Store ✿</h2>
+    <p class="subtitle">Everything you need to know!</p>
+
+    <div class="store-info">
+
+        <div class="info-card">
+            <div class="icon">🛍️</div>
+            <h3>Shopping</h3>
+            <p>Pilih produk favoritmu melalui katalog kami.</p>
+        </div>
+
+        <div class="info-card">
+            <div class="icon">📦</div>
+            <h3>Delivery</h3>
+            <p>Pesanan dikirim melalui jasa ekspedisi.</p>
+        </div>
+
+        <div class="info-card">
+            <div class="icon">⏰</div>
+            <h3>Opening Hours</h3>
+            <p>Monday - Saturday<br>09.00 - 17.00 WIB</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- PRODUCT -->
+<section id="product">
+    <h2 class="section-title">Our Collection 🎀</h2>
+    <p class="subtitle">
+        Cute finds, affordable prices, and unique styles!
+    </p>
+
+    <div class="product-grid">
+
+        <!-- CUTE TOP -->
+        <div class="product-card">
+            <img src="jeans.jpg.jpg" alt="Cute Top">
+
+            <div class="product-info">
+                <h3>Cute Top</h3>
+                <p>
+                    A sweet and feminine top with soft colors,
+                    perfect for a cute everyday outfit.
+                </p>
+                <span class="condition">Good Condition</span>
+                <p class="price">Rp65.000</p>
+
+                <p class="image-source">
+                    Source:
+                    <a href="https://pin.it/5MdmHuy4C"
+                    target="_blank">Pinterest</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- BAGGY JEANS -->
+        <div class="product-card">
+            <img src="cutetop.jpg.jpg" alt="Baggy Jeans">
+
+            <div class="product-info">
+                <h3>Baggy Jeans</h3>
+                <p>
+                    Relaxed-fit denim jeans with a timeless
+                    vintage look for casual styling.
+                </p>
+                <span class="condition">Very Good</span>
+                <p class="price">Rp95.000</p>
+
+                <p class="image-source">
+                    Source:
+                    <a href="https://pin.it/5MdmHuy4C"
+                    target="_blank">Pinterest</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- VINTAGE JACKET -->
+        <div class="product-card">
+            <img src="vintagejacket.jpg.jpg" alt="Vintage Jacket">
+
+            <div class="product-info">
+                <h3>Classic Jacket</h3>
+                <p>
+                    A vintage brown jacket with unique patches
+                    that gives your outfit a retro character.
+                </p>
+                <span class="condition">Good Condition</span>
+                <p class="price">Rp120.000</p>
+
+                <p class="image-source">
+                    Source:
+                    <a href="https://pin.it/1xEsNYMfB"
+                    target="_blank">Pinterest</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- PLAID SKIRT -->
+        <div class="product-card">
+            <img src="plaidjacket.jpg.jpg" alt="Plaid Skirt">
+
+            <div class="product-info">
+                <h3>Plaid Skirt</h3>
+                <p>
+                    A classic plaid mini skirt in earthy tones,
+                    perfect for a vintage-inspired look.
+                </p>
+                <span class="condition">Very Good</span>
+                <p class="price">Rp75.000</p>
+
+                <p class="image-source">
+                    Source:
+                    <a href="https://pin.it/2CboIwzxj"
+                    target="_blank">Pinterest</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- COTTON KNIT HOODIE -->
+        <div class="product-card">
+            <img src="knithoodie.jpg.jpg"
+            alt="Cotton Knit Hoodie">
+
+            <div class="product-info">
+                <h3>Cotton Knit Hoodie</h3>
+                <p>
+                    A cozy brown knit hoodie with a soft texture
+                    and relaxed fit, perfect for a vintage-inspired look.
+                </p>
+                <span class="condition">Good Condition</span>
+                <p class="price">Rp175.000</p>
+
+                <p class="image-source">
+                    Source:
+                    <a href="https://pin.it/44r3axfwR"
+                    target="_blank">Pinterest</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- VINTAGE ISABEL MARANT -->
+        <div class="product-card">
+            <img src="isabelmagant.jpg.jpg"
+            alt="Vintage Isabel Marant">
+
+            <div class="product-info">
+                <h3>Vintage Isabel Marant</h3>
+                <p>
+                    Statement brown high-top sneakers with
+                    a distinctive vintage design and bold details.
+                </p>
+                <span class="condition">Very Good</span>
+                <p class="price">Rp1.250.000</p>
+
+                <p class="image-source">
+                    Source:
+                    <a href="https://pin.it/44r3axfwR"
+                    target="_blank">Pinterest</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="decoration">♡　୨୧　SHOP YOUR STYLE　୨୧　♡</div>
+
+<!-- KONTAK -->
+<section id="kontak">
+    <h2 class="section-title">Get in Touch! 💌</h2>
+    <p class="subtitle">We'd love to hear from you!</p>
+
+    <div class="contact-box">
+        <p>📷 Instagram:
+            <a href="#">@secondchance.thrift</a>
+        </p>
+
+        <p>💬 WhatsApp:
+            <a href="#">081212433412</a>
+        </p>
+
+        <p>📧 Email:
+            <a href="#">secondchance@gmail.com</a>
+        </p>
+    </div>
+</section>
+
+<footer>
+    <p>♡ SECOND CHANCE © 2026 ♡</p>
+    <p>Give Fashion a Second Chance!</p>
+</footer>
+
+</body>
+</html>
